@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main() {
 
@@ -42,3 +43,34 @@ char * greet2( char * name ) {
 
     return greeting;
 }
+// > emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_getNum', '_main', '_getDoubleNum', '_greet', '_greet2']" -o public/demo.js
+// > npm start
+
+// -And run in browser:
+// > let x = ccall('greet2', 'string', ['string'], ['josh']);
+// > console.log(x);
+// < "Hello josh"
+
+
+char * g( char * x ) {
+    return x;
+}
+// > emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_getNum', '_main', '_getDoubleNum', '_greet', '_greet2', '_g' ]" -o public/demo.js
+// > npm start
+
+// -And run in browser:
+// > let x = ccall('g', 'string', ['string'], ['josh']);
+// > console.log(x);
+// < "Hello josh"
+
+
+double * h( double * x ) {
+    return x;
+}
+// > emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_getNum', '_main', '_getDoubleNum', '_greet', '_greet2', '_h' ]" -o public/demo.js
+// > npm start
+
+// -And run in browser:
+// > let x = ccall('h', 'number', ['number'], [2.0]);
+// > console.log(x);
+// < "Hello josh"
