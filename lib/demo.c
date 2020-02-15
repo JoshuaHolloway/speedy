@@ -74,3 +74,40 @@ double * h( double * x ) {
 // > let x = ccall('h', 'number', ['number'], [2.0]);
 // > console.log(x);
 // < "Hello josh"
+
+
+double * f( double * x ) {
+
+    *x += 2.0;
+
+    printf("Inside f()\n");
+    printf("josh\n");
+
+    *x = 100.0;
+    printf("*x=%f\n",*x);
+
+    return x;
+}
+// > emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main', '_f' ]" -o public/demo.js
+// > npm start
+
+// -And run in browser:
+// > let x = ccall('f', 'number', ['number'], [2.0]);
+// > console.log(x);
+// < "Hello josh"
+
+
+
+
+// EMSCRIPTEN_KEEPALIVE
+float addNums (float *buffer, int bufSize) {
+    float total = 0;
+
+    for (int i=0; i<bufSize; i++) {
+        total+= buffer[i];
+    }
+
+    return total;
+}
+
+// > emcc lib/demo.c -s WASM=1 -s EXPORTED_FUNCTIONS="['_main', '_f', '_addNums' ]" -o public/demo.js

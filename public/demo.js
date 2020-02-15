@@ -1242,11 +1242,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5246672,
+    STACK_BASE = 5246688,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 3792,
-    DYNAMIC_BASE = 5246672,
-    DYNAMICTOP_PTR = 3632;
+    STACK_MAX = 3808,
+    DYNAMIC_BASE = 5246688,
+    DYNAMICTOP_PTR = 3648;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1788,7 +1788,7 @@ var ASM_CONSTS = {
 
 
 
-// STATICTOP = STATIC_BASE + 2768;
+// STATICTOP = STATIC_BASE + 2784;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -1849,7 +1849,7 @@ var ASM_CONSTS = {
     }
 
   function _emscripten_get_sbrk_ptr() {
-      return 3632;
+      return 3648;
     }
 
   function _emscripten_memcpy_big(dest, src, num) {
@@ -2151,34 +2151,16 @@ var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
   return Module["asm"]["__wasm_call_ctors"].apply(null, arguments)
 };
 
-var _getNum = Module["_getNum"] = function() {
+var _f = Module["_f"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["getNum"].apply(null, arguments)
+  return Module["asm"]["f"].apply(null, arguments)
 };
 
-var _getDoubleNum = Module["_getDoubleNum"] = function() {
+var _addNums = Module["_addNums"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["getDoubleNum"].apply(null, arguments)
-};
-
-var _greet = Module["_greet"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["greet"].apply(null, arguments)
-};
-
-var _greet2 = Module["_greet2"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["greet2"].apply(null, arguments)
-};
-
-var _h = Module["_h"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["h"].apply(null, arguments)
+  return Module["asm"]["addNums"].apply(null, arguments)
 };
 
 var _main = Module["_main"] = function() {

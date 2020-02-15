@@ -20,6 +20,40 @@
 
   <script src="demo.js"></script>
   </script>
+
+  <script>
+
+    function josh() {
+      const arrayDataToPass = [1, 2, 3, 4, 5]
+      let buffer2
+      let error
+      let result
+
+      // Init the typed array with the same length as the number of items in the array parameter
+      const typedArray = new Float32Array(arrayDataToPass.length)
+
+      // Populate the array with the values
+      for (let i = 0; i < arrayDataToPass.length; i++) {
+        typedArray[i] = arrayDataToPass[i]
+      }
+
+      // Allocate some space in the heap for the data (making sure to use the appropriate memory size of the elements)
+      buffer2 = Module._malloc(typedArray.length * typedArray.BYTES_PER_ELEMENT)
+
+      // Assign the data to the heap - Keep in mind bytes per element
+      Module.HEAPF32.set(typedArray, buffer2 >> 2)
+
+      // Finally, call the function with "number" parameter type for the array (the pointer), and an extra length parameter
+      result = ccall("addNums", null, ["number", "number"], [buffer2, arrayDataToPass.length])
+
+
+      console.log(result)
+    }
+
+
+
+  </script>
+
 </body>
 
 </html>
