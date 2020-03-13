@@ -22,4 +22,10 @@ const submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
 
     console.log(matrix);
+
+    const grapenuts_calories = 210;
+    const grapenuts_protien = 6;
+
+    const total_cals = grapenuts_calories * matrix[0][0];
+    console.log(total_cals);
 });
