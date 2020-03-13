@@ -28,4 +28,7 @@ submit.addEventListener('click', () => {
 
     const total_cals = grapenuts_calories * matrix[0][0];
     console.log(total_cals);
+
+    // Update total-calories
+    document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
 });
