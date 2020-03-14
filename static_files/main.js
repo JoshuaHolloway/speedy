@@ -47,25 +47,25 @@ const update_matrix = () => {
     matrix[0][0] = r1c1.value;
 };
 // ----------------------------------------------
-const submit = document.getElementById('submit');
-submit.addEventListener('click', () => {
-
-    update_matrix();
-    console.log(matrix);
-
-    const food_quantity = matrix[0][0];
-
-    const total_cals = foods.grapenuts.cals * food_quantity;
-     const total_protein = foods.grapenuts.macro.protein  * food_quantity;
-    // const total_fat = foods.grapenuts.protien  * food_quantity;
-
-
-    // Update daily totals
-    document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
-    document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
-});
-// ----------------------------------------------
 $(document).ready(() => {
+    // ----------------------------------------------
+    $('#update_button').click(() => {
+        console.log('update button has been pressed');
+        update_matrix();
+        console.log(matrix);
+
+        const food_quantity = matrix[0][0];
+
+        const total_cals = foods.grapenuts.cals * food_quantity;
+        const total_protein = foods.grapenuts.macro.protein  * food_quantity;
+        // const total_fat = foods.grapenuts.protien  * food_quantity;
+
+
+        // Update daily totals
+        document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
+        document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
+    });
+    // ----------------------------------------------
     $('#allUsersButton').click(() => {
         console.log('JOSH: allUsersButton was clicked!');
         // -When we click button we want to call localhost:3000/users
