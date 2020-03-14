@@ -66,7 +66,15 @@ app.post('/update', (req, res) => {
 });
 // ==============================================
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+
+  const date = new Date();
+  
+  res.render('index.ejs', {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+    date: date.getDate(),
+    day: date.getDay()
+  });
 });
 //=======================================
 const port_num = 8888;
