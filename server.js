@@ -4,6 +4,9 @@ const app = express();
 //=======================================
 app.use(express.static('static_files'));
 //=======================================
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+//=======================================
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('food.db');
 //=======================================
@@ -60,6 +63,10 @@ app.post('/update', (req, res) => {
       }
     );
   }
+});
+// ==============================================
+app.get('/', (req, res) => {
+  res.render('index.ejs');
 });
 //=======================================
 const port_num = 8888;
