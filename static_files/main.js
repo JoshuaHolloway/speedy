@@ -82,6 +82,18 @@ $(document).ready(() => {
     // ----------------------------------------------
     $('#update_button').click(() => {
         console.log('update button pressed');
+        $.ajax({
+            url: 'insert',
+            type: 'POST',
+            data: {
+                name: 'Apple', // TODO: Grab from column-number
+                quantity: 5 // TODO: Grab from entry in table
+            },
+            success: data => {
+                $('#status').html(data.message);
+                console.log('OH YEAH!!!');
+            }
+        })
     });
     // ----------------------------------------------
     $('#allUsersButton').click(() => {
@@ -108,9 +120,9 @@ $(document).ready(() => {
         url: 'users',
         type: 'POST',
         data: {
-        name: $('#insertNameBox').val(),
-        job: $('#insertJobBox').val(),
-        pet: $('#insertPetBox').val()
+            name: $('#insertNameBox').val(),
+            job: $('#insertJobBox').val(),
+            pet: $('#insertPetBox').val()
         },
         success: data => {
         $('#status').html(data.message);

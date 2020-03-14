@@ -57,6 +57,10 @@ app.post('/users', (req, res) => {
   );
 });
 // ==============================================
+app.post('/insert', (req, res) => {
+    console.log('inside /insert via post-request');
+});
+// ==============================================
 // GET profile data for a user
 app.get('/users/:userid', (req, res) => {
   const nameToLookup = req.params.userid; // matches ':userid' above
