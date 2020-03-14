@@ -79,9 +79,32 @@ $(document).ready(() => {
             }
         });
     });
-    // ----------------------------------------------
+
+
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+    // RIGHT HERE!!!!!
+
     $('#update_button').click(() => {
         console.log('update button pressed');
+        $.ajax({
+            url: 'update',
+            type: 'POST',
+            data: {
+                col: 0, // TODO: Grab from column-number
+                quantity: 5 // TODO: Grab from entry in table
+            }
+        });
+    });
+    // ----------------------------------------------
+    $('#insert_button').click(() => {
+        console.log('insert button pressed');
         $.ajax({
             url: 'insert',
             type: 'POST',

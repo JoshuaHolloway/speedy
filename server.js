@@ -78,6 +78,21 @@ app.post('/insert', (req, res) => {
     );
 });
 // ==============================================
+app.post('/update', (req, res) => {
+  console.log('Inside /update route on server');
+
+  // TODO: grap row and col and update that exact one
+
+  db.run(
+    `UPDATE food_table SET quantity = 100 WHERE name = 'Apple'`,
+    {},
+    err => {
+      console.log('sql-query has been performed sucker!');
+    }
+  );
+});
+
+// ==============================================
 // GET profile data for a user
 app.get('/users/:userid', (req, res) => {
   const nameToLookup = req.params.userid; // matches ':userid' above
