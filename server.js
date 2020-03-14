@@ -81,21 +81,47 @@ app.post('/insert', (req, res) => {
 app.post('/update', (req, res) => {
   console.log('Inside /update route on server');
 
-  const arr = req.body.quantities;
-  console.log(arr);
+  const matrix = req.body.matrix;
+  console.log(matrix);
 
   // TODO: grap row and col and update that exact one
 
+  // First-col
   db.run(
     `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
     {
-      $name: req.body.name,
-      $quantity: req.body.quantity
+      $name: matrix[0][0],
+      $quantity: matrix[1][0]
     },
     err => {
-      console.log('sql-query has been performed sucker!');
+      console.log('[1st Col] sql-query has been performed sucker!');
     }
   );
+
+  // Second-col
+  db.run(
+    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
+    {
+      $name: matrix[0][1],
+      $quantity: matrix[1][1]
+    },
+    err => {
+      console.log('[2nd Col] sql-query has been performed sucker!');
+    }
+  );
+
+  // Third-col
+  db.run(
+    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
+    {
+      $name: matrix[0][2],
+      $quantity: matrix[1][2]
+    },
+    err => {
+      console.log('[3rd Col] sql-query has been performed sucker!');
+    }
+  );
+
 });
 
 // ==============================================

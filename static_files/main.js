@@ -3,9 +3,15 @@ const make_matrix = (r, c) => {
     let mat = new Array(r);
     for (let row = 0; row < r; row++)
         mat[row] = new Array(c);
+
+    // Hard-code col-names
+    mat[0][0] = 'Apple';
+    mat[0][1] = 'Orange';
+    mat[0][2] = 'Banana';
+
     return mat;
 };
-let matrix = make_matrix(2, 2);
+let matrix = make_matrix(3, 2);
 // ----------------------------------------------
 const foods = {
     grapenuts: {
@@ -58,16 +64,6 @@ $(document).ready(() => {
                 const food = data[row_num];
                 console.log(food.quantity);
 
-                // Update matrix
-                (() => {
-                    const r1c1 = document.getElementById('r1c1');
-                    matrix[0][0] = r1c1.value;
-                })();
-                // TODO: Update the database here!
-                // TODO: Update the database here!
-                // TODO: Update the database here!
-
-
                 const total_cals = foods.grapenuts.cals * food.quantity;
                 const total_protein = foods.grapenuts.macro.protein * food.quantity;
                 // const total_fat = foods.grapenuts.protien  * food_quantity;
@@ -84,14 +80,13 @@ $(document).ready(() => {
     $('#update_button').click(() => {
         console.log('update button pressed');
 
+        // Grab values from first row of matrix
         const r1_nodelist = document.getElementsByClassName('r1');
         const r1_arr = Array.from(r1_nodelist);
 
-        console.log(r1_arr);
-        r1_arr.forEach((item, idx, arr) => {
-            const val = item.value;
-            console.log(`val: ${val}`);
-        });
+        // Update first row of matrix
+        r1_arr.forEach((item, idx, arr) => matrix[1][idx] = item.value);
+        console.log(matrix);
 
         // forEach calls a function once for each element in an array, in order.
         // arr.forEach((elem, idx, arr) => {...})
@@ -121,8 +116,7 @@ $(document).ready(() => {
             url: 'update',
             type: 'POST',
             data: {
-                name: 'Apple', // TODO: Grab from column-number
-                quantities: [0, 1] // TODO: Grab from entry in table
+                matrix: matrix // TODO: Grab from entry in table
             }
         });
     });
