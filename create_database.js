@@ -18,12 +18,12 @@ const db = new sqlite3.Database('food.db');
 //  which we don't want)
 db.serialize(() => {
   // create a new database table:
-  db.run("CREATE TABLE food_table (name TEXT, cals TEXT, protein TEXT)");
+  db.run("CREATE TABLE food_table (name TEXT, cals INTEGER, protein TEXT)");
 
   // insert 3 rows of data:
-  db.run("INSERT INTO food_table VALUES ('Apple', '10', '15')");
-  db.run("INSERT INTO food_table VALUES ('Orange', '20', '25')");
-  db.run("INSERT INTO food_table VALUES ('Banana', '30', '35')");
+  db.run("INSERT INTO food_table VALUES ('Apple', 10, '15')");
+  db.run("INSERT INTO food_table VALUES ('Orange', 20, '25')");
+  db.run("INSERT INTO food_table VALUES ('Banana', 30, '35')");
 
   console.log('successfully created the food_table table in food.db');
 

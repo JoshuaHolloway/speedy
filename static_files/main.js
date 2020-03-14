@@ -64,6 +64,19 @@ $(document).ready(() => {
         // Update daily totals
         document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
         document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
+
+
+        $.ajax({
+            url: 'users/',
+            type: 'GET',
+            dataType: 'json',
+            success: data => {
+                console.log('FUCK OFF!');
+                console.log(data);
+            }
+        });
+
+
     });
     // ----------------------------------------------
     $('#allUsersButton').click(() => {
