@@ -65,7 +65,7 @@ submit.addEventListener('click', () => {
     document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
 });
 // ----------------------------------------------
-  $('#allUsersButton').click(() => {
+$('#allUsersButton').click(() => {
     console.log('JOSH: allUsersButton was clicked!');
     // -When we click button we want to call localhost:3000/users
     // -Achieve this via ajax request to server without reloading page.
@@ -83,3 +83,19 @@ submit.addEventListener('click', () => {
     // - - - - - - - - - - - - - - - - - - - - - - - - -
 });
 // ----------------------------------------------
+$('#insertButton').click(() => {
+console.log('insertButton clicked!!!');
+$.ajax({
+    url: 'users',
+    type: 'POST',
+    data: {
+    name: $('#insertNameBox').val(),
+    job: $('#insertJobBox').val(),
+    pet: $('#insertPetBox').val()
+    },
+    success: data => {
+    $('#status').html(data.message);
+    console.log('JOSH');
+    }
+}); // $.ajax
+});

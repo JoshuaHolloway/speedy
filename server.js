@@ -47,6 +47,35 @@ app.get('/users', (req, res) => {
 //     pets[i] = db_values[i].pet;
 //   }
 // });
+// ==============================================
+// POST request is for posting new data to the server
+const body_parser = require('body-parser'); // Access the body of the post-request
+app.use(body_parser.urlencoded({ extended: true })); // hook up with your app
+app.post('/users', (req, res) => {
+  console.log('Inside app.post(/users) for POST ', req.body);
+
+  // db.run() ececutes an SQL-query and then runs a callback
+  // -It does not return any data,
+  //  whereas db.all() returns data.
+  db.run(
+    // Arg-1: SQL-query
+    'INSERT INTO users_to_pets VALUES ($name, $job, $pet)',
+    // Arg-2: Values for args in SQL-query
+    {
+      $name: req.body.name,
+      $job: req.body.job,
+      $pet: req.body.pet
+    },
+    // Arg-3: Callback to run after SQL-query
+    err => {
+      if (err) {
+        res.send({ message: 'error in app.post(/users)' });
+      } else {
+        res.send({ message: 'successfully run app.post(/users)' });
+      }
+    }
+  );
+});
 //=======================================
 const port_num = 8888;
 app.listen(port_num, () => console.log('http://localhost:8888') );
