@@ -42,29 +42,10 @@ const foods = {
     }
 };
 // ----------------------------------------------
-const update_matrix = () => {
-    const r1c1 = document.getElementById('r1c1');
-    matrix[0][0] = r1c1.value;
-};
-// ----------------------------------------------
 $(document).ready(() => {
     // ----------------------------------------------
     $('#update_button').click(() => {
         console.log('update button has been pressed');
-        update_matrix();
-        console.log(matrix);
-
-        const food_quantity = matrix[0][0];
-
-        const total_cals = foods.grapenuts.cals * food_quantity;
-        const total_protein = foods.grapenuts.macro.protein  * food_quantity;
-        // const total_fat = foods.grapenuts.protien  * food_quantity;
-
-
-        // Update daily totals
-        document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
-        document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
-
 
         $.ajax({
             url: 'foods/',
@@ -72,11 +53,28 @@ $(document).ready(() => {
             dataType: 'json',
             success: data => {
                 console.log('Data from server at /foods:');
-                console.log(data);
+
+                const food = data[0];
+                console.log(food.cals);
+
+                // Update matrix
+                (() => {
+                    const r1c1 = document.getElementById('r1c1');
+                    matrix[0][0] = r1c1.value;
+                })();
+
+                const food_quantity = matrix[0][0];
+
+                const total_cals = foods.grapenuts.cals * food_quantity;
+                const total_protein = foods.grapenuts.macro.protein  * food_quantity;
+                // const total_fat = foods.grapenuts.protien  * food_quantity;
+
+
+                // Update daily totals
+                document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
+                document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
             }
         });
-
-
     });
     // ----------------------------------------------
     $('#allUsersButton').click(() => {
