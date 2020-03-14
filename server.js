@@ -16,11 +16,11 @@ app.use(express.static('static_files'));
 //   steve: { job: 'eng', pet: 'bear.jpg' }
 // };
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('pets.db');
+const db = new sqlite3.Database('food.db');
 //=======================================
 app.get('/users', (req, res) => {
   //const allUsernames = Object.keys(fakeDatabase); // returns a list of object keys
-  db.all('SELECT name FROM users_to_pets', (err, rows) => {
+  db.all('SELECT name FROM food_table', (err, rows) => {
     // -run this SQL query and then after it is done run this callback
     console.log(rows);
     const all_user_names = rows.map(e => e.name);
@@ -59,7 +59,7 @@ app.post('/users', (req, res) => {
   //  whereas db.all() returns data.
   db.run(
     // Arg-1: SQL-query
-    'INSERT INTO users_to_pets VALUES ($name, $job, $pet)',
+    'INSERT INTO food_table VALUES ($name, $cals, $protein)',
     // Arg-2: Values for args in SQL-query
     {
       $name: req.body.name,
@@ -88,7 +88,7 @@ app.get('/users/:userid', (req, res) => {
 
   db.all(
     // Arg-1: SQL-query
-    'SELECT * FROM users_to_pets WHERE name=$name',
+    'SELECT * FROM food_table WHERE name=$name',
 
     // Arg-2: Object that contains the mapping for $name
     {
