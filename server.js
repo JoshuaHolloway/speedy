@@ -65,6 +65,10 @@ app.post('/update', (req, res) => {
   }
 });
 // ==============================================
+app.get('/table', (req, res) => {
+  res.render('table.ejs');
+});
+// ==============================================
 app.get('/', (req, res) => {
 
   const date = new Date();
