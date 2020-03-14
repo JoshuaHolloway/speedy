@@ -59,6 +59,23 @@ app.post('/users', (req, res) => {
 // ==============================================
 app.post('/insert', (req, res) => {
     console.log('inside /insert via post-request');
+
+    db.run(
+        
+        // Arg-1: SQL-query
+        'INSERT INTO food_table VALUES ($name, $quantity)',
+        
+        // Arg-2: Values for args in SQL-query
+        {
+            $name: req.body.name,
+            $quantity: req.body.quantity
+        },
+
+        // Arg-3: Callback to run after SQL-query
+        err => {
+            console.log('sql-query has been performed sucka!');
+        }
+    );
 });
 // ==============================================
 // GET profile data for a user

@@ -86,7 +86,7 @@ $(document).ready(() => {
             url: 'insert',
             type: 'POST',
             data: {
-                name: 'Apple', // TODO: Grab from column-number
+                name: 'Kiwi', // TODO: Grab from column-number
                 quantity: 5 // TODO: Grab from entry in table
             },
             success: data => {
