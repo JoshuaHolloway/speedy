@@ -54,19 +54,22 @@ $(document).ready(() => {
             success: data => {
                 console.log('Data from server at /foods:');
 
-                const food = data[0];
-                console.log(food.cals);
+                const row_num = 0;
+                const food = data[row_num];
+                console.log(food.quantity);
 
                 // Update matrix
                 (() => {
                     const r1c1 = document.getElementById('r1c1');
                     matrix[0][0] = r1c1.value;
                 })();
+                // TODO: Update the database here!
+                // TODO: Update the database here!
+                // TODO: Update the database here!
 
-                const food_quantity = matrix[0][0];
 
-                const total_cals = foods.grapenuts.cals * food_quantity;
-                const total_protein = foods.grapenuts.macro.protein  * food_quantity;
+                const total_cals = foods.grapenuts.cals * food.quantity;
+                const total_protein = foods.grapenuts.macro.protein  * food.quantity;
                 // const total_fat = foods.grapenuts.protien  * food_quantity;
 
 
