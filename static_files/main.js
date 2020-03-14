@@ -81,24 +81,48 @@ $(document).ready(() => {
     });
 
 
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-    // RIGHT HERE!!!!!
-
     $('#update_button').click(() => {
         console.log('update button pressed');
+
+        const r1_nodelist = document.getElementsByClassName('r1');
+        const r1_arr = Array.from(r1_nodelist);
+
+        console.log(r1_arr);
+        r1_arr.forEach((item, idx, arr) => {
+            const val = item.value;
+            console.log(`val: ${val}`);
+        });
+
+        // forEach calls a function once for each element in an array, in order.
+        // arr.forEach((elem, idx, arr) => {...})
+        //
+        // map() method creates a new array with the results of calling a function for every array element.
+        //
+        // filter() method creates an array filled with all array elements that pass a test (provided as a function)
+        //
+        // for-in loops through properties of the JS-object
+        // for(x in arr)
+        //   console.log(arr[x]);
+        //
+        // for-of loops through values of the JS-object
+        // for(v of arr)
+        //   console.log(v);
+        //
+        // Array are objects with indices as properties
+        // arr: {
+        //     0: val
+        //     1: val
+        //     .
+        //     .
+        //     .
+        //    arr.length: val
+        // }
         $.ajax({
             url: 'update',
             type: 'POST',
             data: {
-                col: 0, // TODO: Grab from column-number
-                quantity: 5 // TODO: Grab from entry in table
+                name: 'Apple', // TODO: Grab from column-number
+                quantities: [0, 1] // TODO: Grab from entry in table
             }
         });
     });

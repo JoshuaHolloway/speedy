@@ -81,11 +81,17 @@ app.post('/insert', (req, res) => {
 app.post('/update', (req, res) => {
   console.log('Inside /update route on server');
 
+  const arr = req.body.quantities;
+  console.log(arr);
+
   // TODO: grap row and col and update that exact one
 
   db.run(
-    `UPDATE food_table SET quantity = 100 WHERE name = 'Apple'`,
-    {},
+    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
+    {
+      $name: req.body.name,
+      $quantity: req.body.quantity
+    },
     err => {
       console.log('sql-query has been performed sucker!');
     }
