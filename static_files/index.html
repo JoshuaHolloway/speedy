@@ -13,6 +13,7 @@
   <body>
 
     <div class="container-fluid">
+        <div class="row">
 
             <table style="width:100%">
             <tr>
@@ -64,21 +65,39 @@
                 </th>
             </tr>
             </table>
-            
-            Name: <input id="nameBox" type="text" size="20"/>
-            <button id="readButton">Get profile</button>
+        </div>
+        <!-- /.row -->
+           
+        <div class="row">
+            <div class="col" style="border: 1px black solid;">
+                <button id="calculate_button">Calculate</button>
+                <button id="update_button">Update</button>
+            </div>
 
-            <button id="update_button" type="submit">Update</button>
-            
-            <button id="allUsersButton">Get all usernames</button>
-            <div id="status"></div>
-            <hr/>
-            Name: <input id="insertNameBox" type="text" size="20"/>
-            Job: <input id="insertJobBox" type="text" size="20"/>
-            Pet: <input id="insertPetBox" type="text" size="20"/>
-            <button id="insertButton">Insert into database</button>
+            <div class="col" style="border: 1px black solid;">
+                Name: <input id="nameBox" type="text" size="20"/>
+                <button id="readButton">Get profile</button>
 
-    </div>
+                <button id="allUsersButton">Get all usernames</button>
+
+                <div id="status"></div>
+
+                <hr/>
+
+                Name: <input id="insertNameBox" type="text" size="20"/>
+                Job: <input id="insertJobBox" type="text" size="20"/>
+                Pet: <input id="insertPetBox" type="text" size="20"/>
+                <button id="insertButton">Insert into database</button>
+
+            </div>
+        
+            
+            
+        </div>
+        <!-- /.row -->
+
+        
+
 
 
 

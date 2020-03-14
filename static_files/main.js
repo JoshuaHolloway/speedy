@@ -44,7 +44,7 @@ const foods = {
 // ----------------------------------------------
 $(document).ready(() => {
     // ----------------------------------------------
-    $('#update_button').click(() => {
+    $('#calculate_button').click(() => {
         console.log('update button has been pressed');
 
         $.ajax({
@@ -69,7 +69,7 @@ $(document).ready(() => {
 
 
                 const total_cals = foods.grapenuts.cals * food.quantity;
-                const total_protein = foods.grapenuts.macro.protein  * food.quantity;
+                const total_protein = foods.grapenuts.macro.protein * food.quantity;
                 // const total_fat = foods.grapenuts.protien  * food_quantity;
 
 
@@ -78,6 +78,10 @@ $(document).ready(() => {
                 document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
             }
         });
+    });
+    // ----------------------------------------------
+    $('#update_button').click(() => {
+        console.log('update button pressed');
     });
     // ----------------------------------------------
     $('#allUsersButton').click(() => {
