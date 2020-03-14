@@ -65,37 +65,72 @@ submit.addEventListener('click', () => {
     document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
 });
 // ----------------------------------------------
-$('#allUsersButton').click(() => {
-    console.log('JOSH: allUsersButton was clicked!');
-    // -When we click button we want to call localhost:3000/users
-    // -Achieve this via ajax request to server without reloading page.
+$(document).ready(() => {
+    $('#allUsersButton').click(() => {
+        console.log('JOSH: allUsersButton was clicked!');
+        // -When we click button we want to call localhost:3000/users
+        // -Achieve this via ajax request to server without reloading page.
+        $.ajax({
+                url: 'users/',
+                type: 'GET',
+                dataType: 'json', // json file returned parsed in js-object
+                success: data => {
+                // if visit to url is successful then call this function
+                console.log('JOSH: /users was successful');
+                console.log(data);
+                $('#status').html('All users: ' + data);
+            }
+        }); // function call with one object as parameter
+        // - - - - - - - - - - - - - - - - - - - - - - - - -
+    });
+    // ----------------------------------------------
+    $('#insertButton').click(() => {
+    console.log('insertButton clicked!!!');
     $.ajax({
-            url: 'users/',
-            type: 'GET',
-            dataType: 'json', // json file returned parsed in js-object
-            success: data => {
-            // if visit to url is successful then call this function
-            console.log('JOSH: /users was successful');
-            console.log(data);
-            $('#status').html('All users: ' + data);
+        url: 'users',
+        type: 'POST',
+        data: {
+        name: $('#insertNameBox').val(),
+        job: $('#insertJobBox').val(),
+        pet: $('#insertPetBox').val()
+        },
+        success: data => {
+        $('#status').html(data.message);
+        console.log('JOSH');
         }
-    }); // function call with one object as parameter
-    // - - - - - - - - - - - - - - - - - - - - - - - - -
-});
-// ----------------------------------------------
-$('#insertButton').click(() => {
-console.log('insertButton clicked!!!');
-$.ajax({
-    url: 'users',
-    type: 'POST',
-    data: {
-    name: $('#insertNameBox').val(),
-    job: $('#insertJobBox').val(),
-    pet: $('#insertPetBox').val()
-    },
-    success: data => {
-    $('#status').html(data.message);
-    console.log('JOSH');
-    }
-}); // $.ajax
+    }); // $.ajax
+    });
+    // ----------------------------------------------
+    $('#readButton').click(() => {
+        const requestURL = 'users/' + $('#nameBox').val();
+        console.log('making ajax request to:', requestURL);
+
+        // From: http://learn.jquery.com/ajax/jquery-ajax-methods/
+        // Using the core $.ajax() method since it's the most flexible.
+        // ($.get() and $.getJSON() are nicer convenience functions)
+        $.ajax({
+        // all URLs are relative to http://localhost:3000/
+        url: requestURL,
+        type: 'GET',
+        dataType: 'json', // this URL returns data in JSON format
+        success: data => {
+            console.log('You received some data!', data);
+
+            if (data.job && data.pet) {
+            $('#status').html('Successfully fetched data at URL: ' + requestURL);
+            $('#jobDiv').html('My job is ' + data.job);
+            $('#petImage')
+                .attr('src', data.pet)
+                .attr('width', '300px');
+            } else {
+            $('#status').html('Error: could not find user at URL: ' + requestURL);
+            // clear the display
+            $('#jobDiv').html('');
+            $('#petImage')
+                .attr('src', '')
+                .attr('width', '0px');
+            }
+        }
+        });
+    });
 });

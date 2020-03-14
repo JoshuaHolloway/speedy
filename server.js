@@ -76,6 +76,46 @@ app.post('/users', (req, res) => {
     }
   );
 });
+// ==============================================
+// GET profile data for a user
+//
+// To test, open these URLs in your browser:
+//   http://localhost:3000/users/Philip
+//   http://localhost:3000/users/Carol
+//   http://localhost:3000/users/invalidusername
+app.get('/users/:userid', (req, res) => {
+  const nameToLookup = req.params.userid; // matches ':userid' above
+
+  db.all(
+    // Arg-1: SQL-query
+    'SELECT * FROM users_to_pets WHERE name=$name',
+
+    // Arg-2: Object that contains the mapping for $name
+    {
+      $name: nameToLookup
+    },
+
+    // Arg-3: Callback function to run when the query finishes
+    (err, rows) => {
+      console.log('Query has finished');
+      console.log(rows);
+      if (rows.length > 0) {
+        //res.send(rows);
+        res.send(rows[0]); // Array only has one element (the row)
+      } else {
+        res.send({}); // failed, so return an empty object instead of undefined
+      }
+    }
+  );
+
+  //const val = fakeDatabase[nameToLookup];
+  //console.log(nameToLookup, '->', val); // for debugging
+  // if (val) {
+  //   res.send(val);
+  // } else {
+  //   res.send({}); // failed, so return an empty object instead of undefined
+  // }
+});
 //=======================================
 const port_num = 8888;
 app.listen(port_num, () => console.log('http://localhost:8888') );
