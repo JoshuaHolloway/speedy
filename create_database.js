@@ -18,18 +18,18 @@ const db = new sqlite3.Database('food.db');
 //  which we don't want)
 db.serialize(() => {
   // create a new database table:
-  db.run("CREATE TABLE food_table (name TEXT, cals INTEGER, protein TEXT)");
+  db.run("CREATE TABLE food_table (name TEXT, quantity INTEGER)");
 
   // insert 3 rows of data:
-  db.run("INSERT INTO food_table VALUES ('Apple', 10, '15')");
-  db.run("INSERT INTO food_table VALUES ('Orange', 20, '25')");
-  db.run("INSERT INTO food_table VALUES ('Banana', 30, '35')");
+  db.run("INSERT INTO food_table VALUES ('Apple', 10)");
+  db.run("INSERT INTO food_table VALUES ('Orange', 20)");
+  db.run("INSERT INTO food_table VALUES ('Banana', 30)");
 
   console.log('successfully created the food_table table in food.db');
 
   // print them out to confirm their contents:
-  db.each("SELECT name, cals, protein FROM food_table", (err, row) => {
-      console.log(row.name + ": " + row.cals + ' - ' + row.protein);
+  db.each("SELECT name, quantity FROM food_table", (err, row) => {
+      console.log(row.name + ": " + row.quantity);
   });
 });
 
