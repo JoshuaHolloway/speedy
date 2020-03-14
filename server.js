@@ -73,7 +73,7 @@ app.post('/insert', (req, res) => {
 
         // Arg-3: Callback to run after SQL-query
         err => {
-            console.log('sql-query has been performed sucka!');
+            console.log('Insert SQL-query has been performed.');
         }
     );
 });
@@ -81,47 +81,22 @@ app.post('/insert', (req, res) => {
 app.post('/update', (req, res) => {
   console.log('Inside /update route on server');
 
-  const matrix = req.body.matrix;
-  console.log(matrix);
+  const matrix = req.body.matrix; 
+  const [num_rows, num_cols] = [matrix.length, matrix[0].length];
 
-  // TODO: grap row and col and update that exact one
-
-  // First-col
-  db.run(
-    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
-    {
-      $name: matrix[0][0],
-      $quantity: matrix[1][0]
-    },
-    err => {
-      console.log('[1st Col] sql-query has been performed sucker!');
-    }
-  );
-
-  // Second-col
-  db.run(
-    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
-    {
-      $name: matrix[0][1],
-      $quantity: matrix[1][1]
-    },
-    err => {
-      console.log('[2nd Col] sql-query has been performed sucker!');
-    }
-  );
-
-  // Third-col
-  db.run(
-    `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
-    {
-      $name: matrix[0][2],
-      $quantity: matrix[1][2]
-    },
-    err => {
-      console.log('[3rd Col] sql-query has been performed sucker!');
-    }
-  );
-
+  // TODO: Perform the following in a single SQL-Query
+  for (let col = 0; col < num_cols; ++col) {
+    db.run(
+      `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
+      {
+        $name: matrix[0][col],
+        $quantity: matrix[1][col]
+      },
+      err => {
+        console.log(`[Col: ${col}] SQL-query has been performed.`);
+      }
+    );
+  }
 });
 
 // ==============================================

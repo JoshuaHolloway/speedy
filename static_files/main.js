@@ -13,6 +13,7 @@ const make_matrix = (r, c) => {
 };
 let matrix = make_matrix(3, 2);
 // ----------------------------------------------
+// NOTE: This will be replaced by an API-call
 const foods = {
     grapenuts: {
         cals: 200,
