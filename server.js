@@ -4,17 +4,6 @@ const app = express();
 //=======================================
 app.use(express.static('static_files'));
 //=======================================
-// const db = {
-//   // Key: Value
-//   philip: {
-//     // JS-Object
-//     //Key: Value
-//     job: 'prof',
-//     pet: 'cat.jpg'
-//   },
-//   josh: { job: 'dev', pet: 'dog.jpg' },
-//   steve: { job: 'eng', pet: 'bear.jpg' }
-// };
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('food.db');
 //=======================================
@@ -37,25 +26,6 @@ app.get('/users', (req, res) => {
     res.send(all_user_names);
   });
 });
-// app.get('/users', (req, res) => {
-//   // Keys of db
-//   const db_keys = Object.keys(db);
-//   res.send(db_keys);
-//   //console.log('db_keys:');
-//   //console.log(db_keys);
-
-//   // Values of db
-//   const db_values = Object.values(db);
-//   //console.log('db_values:');
-//   //console.log(db_values);
-
-//   let jobs = new Array();
-//   let pets = new Array();
-//   for (let i = 0; i < db_values.length; ++i) {
-//     jobs[i] = db_values[i].job;
-//     pets[i] = db_values[i].pet;
-//   }
-// });
 // ==============================================
 // POST request is for posting new data to the server
 const body_parser = require('body-parser'); // Access the body of the post-request
@@ -88,11 +58,6 @@ app.post('/users', (req, res) => {
 });
 // ==============================================
 // GET profile data for a user
-//
-// To test, open these URLs in your browser:
-//   http://localhost:3000/users/Philip
-//   http://localhost:3000/users/Carol
-//   http://localhost:3000/users/invalidusername
 app.get('/users/:userid', (req, res) => {
   const nameToLookup = req.params.userid; // matches ':userid' above
 
