@@ -18,6 +18,15 @@ app.use(express.static('static_files'));
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('food.db');
 //=======================================
+app.get('/foods', (req, res) => {
+    db.all('SELECT * FROM food_table', (err, rows) => {
+        console.log(rows);
+
+        // Send data to front-end
+        res.send(rows);
+    });
+});
+//=======================================
 app.get('/users', (req, res) => {
   //const allUsernames = Object.keys(fakeDatabase); // returns a list of object keys
   db.all('SELECT name FROM food_table', (err, rows) => {
@@ -51,6 +60,7 @@ app.get('/users', (req, res) => {
 // POST request is for posting new data to the server
 const body_parser = require('body-parser'); // Access the body of the post-request
 app.use(body_parser.urlencoded({ extended: true })); // hook up with your app
+// ==============================================
 app.post('/users', (req, res) => {
   console.log('Inside app.post(/users) for POST ', req.body);
 

@@ -67,11 +67,11 @@ $(document).ready(() => {
 
 
         $.ajax({
-            url: 'users/',
+            url: 'foods/',
             type: 'GET',
             dataType: 'json',
             success: data => {
-                console.log('FUCK OFF!');
+                console.log('Data from server at /foods:');
                 console.log(data);
             }
         });
