@@ -65,6 +65,36 @@ app.post('/update', (req, res) => {
   }
 });
 // ==============================================
+app.post('/update2', (req, res) => {
+  console.log('Inside /update route on server');
+
+  const day_totals = req.body.day_totals;
+  console.log(day_totals);
+
+  
+  // const [num_rows, num_cols] = [matrix.length, matrix[0].length];
+
+  // TODO: Perform the following in a single SQL-Query
+  // for (let col = 0; col < num_cols; ++col) {
+
+
+
+    // db.run(
+    //   `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
+    //   {
+    //     $name: matrix[0][col],
+    //     $quantity: matrix[1][col]
+    //   },
+    //   err => {
+    //     console.log(`[Col: ${col}] SQL-query has been performed.`);
+    //   }
+    // );
+
+
+
+  // } // end-for()
+});
+// ==============================================
 app.get('/table', (req, res) => {
   res.render('table.ejs');
 });

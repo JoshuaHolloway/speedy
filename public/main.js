@@ -18,6 +18,7 @@ const quants = {
     'orange': 0,
     'banana': 0
 };
+// ----------------------------------------------
 const day_totals = {
     'cals': 0,
     'protien': 0,
@@ -64,41 +65,52 @@ const foods = {
         }
     }
 };
+// ----------------------------------------------
+const ajax_request = (data) => {
+
+    
+}
+// ==============================================
+// TODO: Upon navigation away from daily/quantity-table page, update database
+// ==============================================
+// Upon change of any value in quantities fields, update totals for day.
+const joshs_nodelist = document.getElementsByClassName('JOSH');
+joshs = Array.from(joshs_nodelist);
+joshs.forEach((elem, idx, arr) => {
+    elem.addEventListener('change', (event) => {
+        
+        console.log('Value Changed');
+
+        // Step 0: Grab value in field
+        const radix = 10;
+        const quantity = parseInt(elem.value, radix);
+        console.log(`quantity: ${quantity}`);
+
+        // Step 1: Grab name of food from html
+        const food_name = elem.parentElement.parentElement.dataset.josh;
+
+        // Step 2: Index into JS-Object with name and update quantity
+        quants[food_name] = quantity;
+        console.log(quants[food_name]);
+
+        // Step 3: Update daily totals
+        const food__name = 'grapenuts';
+        day_totals.cals = quantity * foods[food__name].cals;
+        // TODO: Change to food_name!
+
+        // Step 4: Update display
+        day_totals.update_totals();
+
+        // TODO: CHANGE TO ONLY UPDATE DB ON PAGE CHANGE
+        // Step 5: Update Database
+        //$.ajax({url: 'update2', type: 'POST', data: { day_totals: day_totals } });
+    });
+});
+
+// ==============================================
+// ==============================================
 // ==============================================
 $(document).ready(() => {
-
-    // Upon change of any value in quantities fields, update totals for day.
-    const joshs_nodelist = document.getElementsByClassName('JOSH');
-    joshs = Array.from(joshs_nodelist);
-    joshs.forEach((elem, idx, arr) => {
-        elem.addEventListener('change', (event) => {
-            
-            console.log('Value Changed');
-
-            // Step 0: Grab value in field
-            const radix = 10;
-            const quantity = parseInt(elem.value, radix);
-            console.log(`quantity: ${quantity}`);
-
-            // Step 1: Grab name of food from html
-            const food_name = elem.parentElement.parentElement.dataset.josh;
-
-            // Step 2: Index into JS-Object with name and update quantity
-            quants[food_name] = quantity;
-            console.log(quants[food_name]);
-
-            // Step 3: Update daily totals
-            const food__name = 'grapenuts';
-            day_totals.cals = quantity * foods[food__name].cals;
-            // TODO: Change to apple!
-
-            // Step 4: Update display
-            day_totals.update_totals();
-        });
-    });
-
-    // TODO: Upon navigation away from daily/quantity-table page, update database
-
     // ----------------------------------------------
     $('#calculate_button').click(() => {
         console.log('calculate button has been pressed');
