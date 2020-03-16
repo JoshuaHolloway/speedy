@@ -52,7 +52,7 @@ const foods = {
 $(document).ready(() => {
     // ----------------------------------------------
     $('#calculate_button').click(() => {
-        console.log('update button has been pressed');
+        console.log('calculate button has been pressed');
 
         $.ajax({
             url: 'foods/',
@@ -71,8 +71,8 @@ $(document).ready(() => {
 
 
                 // Update daily totals
-                document.querySelectorAll('.Row .total_cals')[0].innerHTML = total_cals;
-                document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
+                document.querySelectorAll('#total_cals')[0].innerHTML = total_cals;
+                // document.querySelectorAll('.Row .total_protein')[0].innerHTML = total_protein;
             }
         });
     });

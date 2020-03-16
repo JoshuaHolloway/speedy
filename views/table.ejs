@@ -137,10 +137,12 @@
             </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Food Log for Day</h3>
-                <div class="card shadow">
+                <h3 class="text-dark mb-4">Food Log for Day<button class="btn btn-primary" id="calculate_button" type="button">Calculate</button><button class="btn btn-primary" id="insert_button" type="button">Insert</button><button class="btn btn-primary" id="update_button" type="button">Update</button></h3>
+                <div
+                    class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Jan 01 2020</p>
+                        <h1 id="total_cals">Output</h1>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -163,7 +165,7 @@
                                 <tbody id="DATA-TABLE-JOSH">
                                     <tr data-josh="apple">
                                         <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/apple-powder-organic%20-60x69.jpg">Apple</td>
-                                        <td><input type="number" class="JOSH"></td>
+                                        <td><input type="number" class="JOSH" value="1"></td>
                                         <td>
                                             <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
                                                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
@@ -278,14 +280,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
-            </div>
-        </footer>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
+        </div>
+    </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -293,6 +295,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
