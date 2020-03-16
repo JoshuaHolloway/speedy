@@ -13,11 +13,32 @@ const make_matrix = (r, c) => {
 };
 let matrix = make_matrix(3, 2);
 // ----------------------------------------------
+// Quantities for day
 const quants = {
     'apple': 0,
     'orange': 0,
     'banana': 0
 };
+// Update todays quantities from database upon page load
+document.addEventListener('DOMContentLoaded', function(){
+
+    // Get quantities from food.db
+    $.ajax({
+        url: 'foods',
+        type: 'GET',
+        // data: {
+        //     name: 'Kiwi', // TODO: Grab from column-number
+        //     quantity: 5 // TODO: Grab from entry in table
+        // },
+        success: data => {
+            // $('#status').html(data.message);
+            console.log('OH YEAH!!!');
+
+            console.log(data);
+        }
+    })
+
+});
 // ----------------------------------------------
 const day_totals = {
     'cals': 0,
@@ -65,11 +86,6 @@ const foods = {
         }
     }
 };
-// ----------------------------------------------
-const ajax_request = (data) => {
-
-    
-}
 // ==============================================
 // TODO: Upon navigation away from daily/quantity-table page, update database
 // ==============================================
@@ -103,7 +119,7 @@ joshs.forEach((elem, idx, arr) => {
 
         // TODO: CHANGE TO ONLY UPDATE DB ON PAGE CHANGE
         // Step 5: Update Database
-        //$.ajax({url: 'update2', type: 'POST', data: { day_totals: day_totals } });
+        $.ajax({url: 'update2', type: 'POST', data: { day_totals: day_totals } });
     });
 });
 
