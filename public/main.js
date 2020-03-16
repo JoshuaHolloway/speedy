@@ -15,9 +15,13 @@ let matrix = make_matrix(3, 2);
 // ----------------------------------------------
 // Quantities for day
 const quants = {
-    'apple': 0,
-    'orange': 0,
-    'banana': 0
+    // 'apple': 0,
+    // 'orange': 0,
+    // 'banana': 0,
+
+    update(name, quant) {
+        this[name] = quant;
+    }
 };
 // Update todays quantities from database upon page load
 document.addEventListener('DOMContentLoaded', function(){
@@ -35,6 +39,16 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log('OH YEAH!!!');
 
             console.log(data);
+
+            // update local js-object
+            data.forEach((elem, idx, arr) => {
+                const food_name = elem.name;
+                const food_quant = elem.quantity;
+                quants.update(food_name, food_quant);
+            });
+
+            console.log('foods:');
+            console.log(quants);
         }
     })
 

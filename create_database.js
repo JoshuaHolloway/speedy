@@ -21,9 +21,9 @@ db.serialize(() => {
   db.run("CREATE TABLE food_table (name TEXT, quantity INTEGER)");
 
   // insert 3 rows of data:
-  db.run("INSERT INTO food_table VALUES ('Apple', 1)");
-  db.run("INSERT INTO food_table VALUES ('Orange', 2)");
-  db.run("INSERT INTO food_table VALUES ('Banana', 3)");
+  db.run("INSERT INTO food_table VALUES ('apple', 1)");
+  db.run("INSERT INTO food_table VALUES ('orange', 2)");
+  db.run("INSERT INTO food_table VALUES ('banana', 3)");
 
   console.log('successfully created the food_table table in food.db');
 
