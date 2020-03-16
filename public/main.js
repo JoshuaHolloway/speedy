@@ -18,6 +18,16 @@ const quants = {
     'orange': 0,
     'banana': 0
 };
+const day_totals = {
+    'cals': 0,
+    'protien': 0,
+    'sugar': 0,
+    'fat': 0,
+
+    update_totals() {
+        document.querySelectorAll('#total_cals')[0].innerHTML = this.cals;
+    }
+};
 // ----------------------------------------------
 // NOTE: This will be replaced by an API-call
 const foods = {
@@ -78,7 +88,12 @@ $(document).ready(() => {
             console.log(quants[food_name]);
 
             // Step 3: Update daily totals
+            const food__name = 'grapenuts';
+            day_totals.cals = quantity * foods[food__name].cals;
+            // TODO: Change to apple!
 
+            // Step 4: Update display
+            day_totals.update_totals();
         });
     });
 
