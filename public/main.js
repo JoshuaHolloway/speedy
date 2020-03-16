@@ -13,6 +13,12 @@ const make_matrix = (r, c) => {
 };
 let matrix = make_matrix(3, 2);
 // ----------------------------------------------
+const quants = {
+    'apple': 0,
+    'orange': 0,
+    'banana': 0
+};
+// ----------------------------------------------
 // NOTE: This will be replaced by an API-call
 const foods = {
     grapenuts: {
@@ -50,6 +56,34 @@ const foods = {
 };
 // ==============================================
 $(document).ready(() => {
+
+    // Upon change of any value in quantities fields, update totals for day.
+    const joshs_nodelist = document.getElementsByClassName('JOSH');
+    joshs = Array.from(joshs_nodelist);
+    joshs.forEach((elem, idx, arr) => {
+        elem.addEventListener('change', (event) => {
+            
+            console.log('Value Changed');
+
+            // Step 0: Grab value in field
+            const radix = 10;
+            const quantity = parseInt(elem.value, radix);
+            console.log(`quantity: ${quantity}`);
+
+            // Step 1: Grab name of food from html
+            const food_name = elem.parentElement.parentElement.dataset.josh;
+
+            // Step 2: Index into JS-Object with name and update quantity
+            quants[food_name] = quantity;
+            console.log(quants[food_name]);
+
+            // Step 3: Update daily totals
+
+        });
+    });
+
+    // TODO: Upon navigation away from daily/quantity-table page, update database
+
     // ----------------------------------------------
     $('#calculate_button').click(() => {
         console.log('calculate button has been pressed');
