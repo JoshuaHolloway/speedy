@@ -62,6 +62,24 @@ class Data_for_Day {
                 // update local js-object storing quantities for day
                 data.forEach(d => this.foods[d.name] = d.quantity);
 
+                console.log(data);
+
+                const tr = document.createElement('tr');
+                // // div.innerHTML = data[0];
+                const x = document.getElementById('quantity-table');
+
+                tr.innerHTML = `
+                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/banana-60x60.jpg">Banana</td>
+                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                        <td>
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                            </div>
+                        </td>
+                `;
+
+                x.append(tr);
+
                 // DEBUG
                 console.log('~~~~~~~~~~~~~~~~');
                 console.log(this.foods);
