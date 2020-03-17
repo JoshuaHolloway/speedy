@@ -56,7 +56,7 @@ class Data_for_Day {
                     // const food_name = elem.name;
                     // const food_quant = elem.quantity;
                     // quants.update(food_name, food_quant);
-                    this.update(elem.name, elem.quantity);
+                    this.update_quantities(elem.name, elem.quantity);
                 });
 
                 // DEBUG
@@ -66,7 +66,7 @@ class Data_for_Day {
 
 
                 // update quantities drawn to screen
-                //quants.display();
+                this.update_quantity_display();
 
                 // update daily totals
                 //day_totals.update_totals();
@@ -84,9 +84,22 @@ class Data_for_Day {
         // Step 3: 
 
     }
-    update(name, quantity) {
+    update_quantities(name, quantity) {
         this.food_quants[name] = quantity;
     }
+
+    update_quantity_display() {
+        const input_fields = Array.from(document.getElementsByClassName('JOSH'));
+        input_fields.forEach((elem, idx, arr) => {
+
+            // Step 1: Grab name of row:
+            const food_name = elem.parentElement.parentElement.dataset.josh;
+
+            // Step 2: Set HTML value to quantity
+            elem.value = this.food_quants[food_name];
+        });
+    }
+
 }
 // ----------------------------------------------
 // Quantities for day
