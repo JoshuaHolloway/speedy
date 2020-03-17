@@ -39,6 +39,7 @@ const foods = {
 class Data_for_Day {
 
     // Properties
+    foods = [];
     nutrients = {
         'cals': 0,
         'protien': 0,
@@ -46,25 +47,10 @@ class Data_for_Day {
         'fat': 0
     };
 
-    food_quantities = {
-        'apple': 0,
-        'banana': 0,
-        'orange': 0,
-        'grapenuts': 0,
-        'bread': 0,
-        'egg-white': 0,
-        'egg-whole': 0,
-        'chicken': 0,
-        'milk': 0,
-        'strawbabies': 0
-    };
-
-    foods = [];
-
     // Methods
     constructor() {
 
-        // Step 0: Upon page load create an object with this constructor
+        // Step 0: Upon page load create an object
         console.log('Data_for_Day object created');
 
         // Step 1: Run AJAX-call to update food quantities
@@ -75,10 +61,7 @@ class Data_for_Day {
 
                 // update local js-object storing quantities for day
                 data.forEach((elem, idx, arr) => {
-                    // const food_name = elem.name;
-                    // const food_quant = elem.quantity;
-                    // quants.update(food_name, food_quant);
-                    this.update_quantities(elem.name, elem.quantity);
+                    this.foods[elem.name] = elem.quantity;
                 });
 
                 // DEBUG
@@ -103,13 +86,9 @@ class Data_for_Day {
         })
 
     }
-    update_quantities(name, quantity) {
 
-        // TODO: Change to dynamically add the food
-        this.food_quantities[name] = quantity;
-        this.foods.push({[name]: quantity});
-    }
 
+    // TODO: Generate the row with data-name based on the foods retrieved from database
     update_quantity_display() {
         const input_fields = Array.from(document.getElementsByClassName('food-quantity-input-field'));
         input_fields.forEach((elem, idx, arr) => {
@@ -118,7 +97,7 @@ class Data_for_Day {
             const food_name = elem.parentElement.parentElement.dataset.food;
 
             // Step 2: Set HTML value to quantity
-            elem.value = this.food_quantities[food_name];
+            elem.value = this.foods[food_name];
         });
     }
 
