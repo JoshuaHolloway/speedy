@@ -87,13 +87,16 @@ class Data_for_Day {
         input_fields.forEach((elem, idx, arr) => {
 
             // Step 1: Grab name of row:
-            const food_name = elem.parentElement.parentElement.dataset.josh;
+            const food_name = elem.parentElement.parentElement.dataset.food;
 
             // Step 2: Set HTML value to quantity
             elem.value = this.food_quantities[food_name];
         });
     }
 
+    update_totals() {}
+
+    update_totals_display() {}
 }
 // ----------------------------------------------
 // ----------------------------------------------
