@@ -44,15 +44,49 @@ class Data_for_Day {
         console.log('Data_for_Day object created');
 
         // Step 1: Run AJAX-call to update food quantities
+        $.ajax({
+            url: 'foods',
+            type: 'GET',
+            success: data => {
+                console.log('Food Quantities retrieved from database:');
+                console.log(data);
+
+                // update local js-object storing quantities for day
+                data.forEach((elem, idx, arr) => {
+                    // const food_name = elem.name;
+                    // const food_quant = elem.quantity;
+                    // quants.update(food_name, food_quant);
+                    this.update(elem.name, elem.quantity);
+                });
+
+                // DEBUG
+                console.log('~~~~~~~~~~~~~~~~');
+                console.log(this.food_quants);
+                console.log('~~~~~~~~~~~~~~~~');
 
 
+                // update quantities drawn to screen
+                //quants.display();
+
+                // update daily totals
+                //day_totals.update_totals();
+
+                //console.log('foods:');
+                //console.log(quants);
+            }
+        })
+
+        // TODO: Create dedicated db-table for daily values
         // Step 2: Calculate daily values
+        // TODO: Create dedicated db-table for daily values
 
 
         // Step 3: 
 
     }
-    update() {}
+    update(name, quantity) {
+        this.food_quants[name] = quantity;
+    }
 }
 // ----------------------------------------------
 // Quantities for day
@@ -137,31 +171,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const data_for_day = new Data_for_Day();
 
-    // Get quantities from food.db
-    $.ajax({
-        url: 'foods',
-        type: 'GET',
-        success: data => {
-            console.log('Food Quantities retrieved from database:');
-            console.log(data);
-
-            // update local js-object storing quantities for day
-            data.forEach((elem, idx, arr) => {
-                const food_name = elem.name;
-                const food_quant = elem.quantity;
-                quants.update(food_name, food_quant);
-            });
-
-            // update quantities drawn to screen
-            quants.display();
-
-            // update daily totals
-            day_totals.update_totals();
-
-            console.log('foods:');
-            console.log(quants);
-        }
-    })
 });
 // ==============================================
 // TODO: Upon navigation away from daily/quantity-table page, update database
