@@ -70,8 +70,6 @@ class Data_for_Day {
             url: 'foods',
             type: 'GET',
             success: data => {
-                console.log('Food Quantities retrieved from database:');
-                console.log(data);
 
                 // update local js-object storing quantities for day
                 data.forEach((elem, idx, arr) => {
@@ -87,23 +85,15 @@ class Data_for_Day {
                 // update daily totals
                 this.update_totals();
 
-                // DEBUG
-                console.log('~~~~~~~~~~~~~~~~');
-                console.log(this.nutrients);
-                console.log('~~~~~~~~~~~~~~~~');
+                // TODO: Create dedicated db-table for daily values
+                // Step 2: Calculate daily values
+                // TODO: Create dedicated db-table for daily values
+                this.update_totals();        
 
-                //console.log('foods:');
-                //console.log(quants);
+                // Step 3: 
+                this.update_totals_display();
             }
         })
-
-        // TODO: Create dedicated db-table for daily values
-        // Step 2: Calculate daily values
-        // TODO: Create dedicated db-table for daily values
-        this.update_totals();        
-
-        // Step 3: 
-        this.update_totals_display();
 
     }
     update_quantities(name, quantity) {
@@ -124,13 +114,11 @@ class Data_for_Day {
 
     update_totals() {
         this.nutrients['cals'] = this.food_quantities['apple'];
-
-        console.log('Inside update_totals()');
-        console.log(this.nutrients);
     }
 
     update_totals_display() {
-        document.getElementById('total_cals').innerHTML = this.nutrients['cals'];
+        const tota_cals = document.getElementById('total_cals');
+        total_cals.innerHTML = this.nutrients['cals'];
     }
 }
 // ----------------------------------------------
