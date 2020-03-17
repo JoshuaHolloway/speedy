@@ -59,6 +59,8 @@ class Data_for_Day {
         'strawbabies': 0
     };
 
+    foods = [];
+
     // Methods
     constructor() {
 
@@ -79,6 +81,11 @@ class Data_for_Day {
                     this.update_quantities(elem.name, elem.quantity);
                 });
 
+                // DEBUG
+                console.log('~~~~~~~~~~~~~~~~');
+                console.log(this.foods);
+                console.log('~~~~~~~~~~~~~~~~');
+
                 // update quantities drawn to screen
                 this.update_quantity_display();
 
@@ -97,7 +104,10 @@ class Data_for_Day {
 
     }
     update_quantities(name, quantity) {
+
+        // TODO: Change to dynamically add the food
         this.food_quantities[name] = quantity;
+        this.foods.push({[name]: quantity});
     }
 
     update_quantity_display() {
@@ -113,7 +123,12 @@ class Data_for_Day {
     }
 
     update_totals() {
+
+        // TEMP
         this.nutrients['cals'] = this.food_quantities['apple'];
+
+        // Loop over all the food quantities
+        
     }
 
     update_totals_display() {
