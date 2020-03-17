@@ -93,9 +93,11 @@ class Data_for_Day {
                 data.forEach(d => {
                     this.foods[d.name] = d.quantity;
 
+                    // Add rows to HTML
                     const tr = document.createElement('tr');
                     const table = document.getElementById('quantity-table');
 
+                    // Calculate current total calories per row
                     const cals = nutrition_facts[d.name].cals * d.quantity;
                     
                     tr.innerHTML = `
@@ -134,10 +136,16 @@ class Data_for_Day {
                 });
 
 
-                // DEBUG
-                console.log('~~~~~~~~~~~~~~~~');
-                console.log(this.foods);
-                console.log('~~~~~~~~~~~~~~~~');
+                // Add event listeners on each input
+                // field for newly created rows
+                
+                const input_fields = Array.from(document.getElementsByClassName('food-quantity-input-field'));
+                console.log(input_fields);
+
+                input_fields.forEach((elem, idx, arr) => {
+                    elem.addEventListener('change', () => console.log('CHANGED') );
+                });
+
 
                 // update quantities drawn to screen
                 //this.update_quantity_display();
@@ -179,5 +187,12 @@ document.addEventListener('DOMContentLoaded', function(){
     const data_for_day = new Data_for_Day();
 });
 // ==============================================
-// TODO: Upon navigation away from daily/quantity-table page, update database
-// ==============================================
+// Update database and calculate daily totals upon change in field
+
+
+$(document).ready(() => {
+
+    console.log('document ready');
+
+
+});
