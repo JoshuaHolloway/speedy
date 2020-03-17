@@ -15,12 +15,36 @@ let matrix = make_matrix(3, 2);
 // ----------------------------------------------
 // Quantities for day
 const quants = {
-    // 'apple': 0,
-    // 'orange': 0,
-    // 'banana': 0,
+    // -Upon page load the properties
+    //  and their corresponding values
+    //  are added.
 
     update(name, quant) {
         this[name] = quant;
+    },
+
+    display() {
+        const input_fields = Array.from(document.getElementsByClassName('JOSH'));
+
+
+        // TEST: Update one element (banana one)
+        // const food_name = input_fields[2].parentElement.parentElement.dataset.josh;
+        // input_fields[2].value = this[food_name];
+        
+
+
+        input_fields.forEach((elem, idx, arr) => {
+
+            // // Step 1: Grab name of row:
+            const food_name = elem.parentElement.parentElement.dataset.josh;
+
+            // // Step 2: Set HTML value to quantity
+            //console.log(this['this[food_name] = ' + food_name] + ',  !this[food_name] = ' + !this[food_name] );
+            if(this[food_name]) {
+                elem.value = this[food_name];
+            }
+                
+        });
     }
 };
 // Update todays quantities from database upon page load
@@ -30,28 +54,24 @@ document.addEventListener('DOMContentLoaded', function(){
     $.ajax({
         url: 'foods',
         type: 'GET',
-        // data: {
-        //     name: 'Kiwi', // TODO: Grab from column-number
-        //     quantity: 5 // TODO: Grab from entry in table
-        // },
         success: data => {
-            // $('#status').html(data.message);
-            console.log('OH YEAH!!!');
-
+            console.log('Food Quantities retrieved from database:');
             console.log(data);
 
-            // update local js-object
+            // update local js-object storing quantities for day
             data.forEach((elem, idx, arr) => {
                 const food_name = elem.name;
                 const food_quant = elem.quantity;
                 quants.update(food_name, food_quant);
             });
 
+            // update quantities drawn to screen
+            quants.display();
+
             console.log('foods:');
             console.log(quants);
         }
     })
-
 });
 // ----------------------------------------------
 const day_totals = {
