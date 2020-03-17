@@ -13,6 +13,48 @@
 // };
 // let matrix = make_matrix(3, 2);
 // ----------------------------------------------
+// Data for day
+class Data_for_Day {
+
+    // Properties
+    nutrients = {
+        'cals': 0,
+        'protien': 0,
+        'sugar': 0,
+        'fat': 0
+    };
+
+    food_quants = {
+        'apple': 0,
+        'banana': 0,
+        'orange': 0,
+        'grapenuts': 0,
+        'bread': 0,
+        'egg-white': 0,
+        'egg-whole': 0,
+        'chicken': 0,
+        'milk': 0,
+        'strawbabies': 0
+    };
+
+    // Methods
+    constructor() {
+
+        // Step 0: Upon page load create an object with this constructor
+        console.log('Data_for_Day object created');
+
+        // Step 1: Run AJAX-call to update food quantities
+
+
+        // Step 2: Calculate daily values
+
+
+        // Step 3: 
+
+    }
+    update() {}
+}
+// ----------------------------------------------
 // Quantities for day
 const quants = {
     // -Upon page load the properties
@@ -40,32 +82,6 @@ const quants = {
         });
     }
 };
-// Update todays quantities from database upon page load
-document.addEventListener('DOMContentLoaded', function(){
-
-    // Get quantities from food.db
-    $.ajax({
-        url: 'foods',
-        type: 'GET',
-        success: data => {
-            console.log('Food Quantities retrieved from database:');
-            console.log(data);
-
-            // update local js-object storing quantities for day
-            data.forEach((elem, idx, arr) => {
-                const food_name = elem.name;
-                const food_quant = elem.quantity;
-                quants.update(food_name, food_quant);
-            });
-
-            // update quantities drawn to screen
-            quants.display();
-
-            console.log('foods:');
-            console.log(quants);
-        }
-    })
-});
 // ----------------------------------------------
 const day_totals = {
     'cals': 0,
@@ -113,6 +129,40 @@ const foods = {
         }
     }
 };
+// ==============================================
+// Update todays quantities from database upon page load
+document.addEventListener('DOMContentLoaded', function(){
+
+
+
+    const data_for_day = new Data_for_Day();
+
+    // Get quantities from food.db
+    $.ajax({
+        url: 'foods',
+        type: 'GET',
+        success: data => {
+            console.log('Food Quantities retrieved from database:');
+            console.log(data);
+
+            // update local js-object storing quantities for day
+            data.forEach((elem, idx, arr) => {
+                const food_name = elem.name;
+                const food_quant = elem.quantity;
+                quants.update(food_name, food_quant);
+            });
+
+            // update quantities drawn to screen
+            quants.display();
+
+            // update daily totals
+            day_totals.update_totals();
+
+            console.log('foods:');
+            console.log(quants);
+        }
+    })
+});
 // ==============================================
 // TODO: Upon navigation away from daily/quantity-table page, update database
 // ==============================================
