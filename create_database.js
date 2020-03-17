@@ -21,9 +21,16 @@ db.serialize(() => {
   db.run("CREATE TABLE food_table (name TEXT, quantity INTEGER)");
 
   // insert 3 rows of data:
-  db.run("INSERT INTO food_table VALUES ('apple', 1)");
-  db.run("INSERT INTO food_table VALUES ('orange', 2)");
-  db.run("INSERT INTO food_table VALUES ('banana', 3)");
+  db.run("INSERT INTO food_table VALUES ('apple', 0)");       // 1
+  db.run("INSERT INTO food_table VALUES ('orange', 0)");      // 2
+  db.run("INSERT INTO food_table VALUES ('banana', 0)");      // 3
+  db.run("INSERT INTO food_table VALUES ('grapenuts', 0)");   // 4
+  db.run("INSERT INTO food_table VALUES ('bread', 0)");       // 5
+  db.run("INSERT INTO food_table VALUES ('egg-whole', 0)");   // 6
+  db.run("INSERT INTO food_table VALUES ('egg-white', 0)");   // 7
+  db.run("INSERT INTO food_table VALUES ('chicken', 0)");     // 8
+  db.run("INSERT INTO food_table VALUES ('milk', 0)");        // 9
+  db.run("INSERT INTO food_table VALUES ('strawbabies', 0)"); // 10
 
   console.log('successfully created the food_table table in food.db');
 
