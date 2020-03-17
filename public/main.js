@@ -1,17 +1,17 @@
 // ----------------------------------------------
-const make_matrix = (r, c) => {
-    let mat = new Array(r);
-    for (let row = 0; row < r; row++)
-        mat[row] = new Array(c);
-
-    // Hard-code col-names
-    mat[0][0] = 'Apple';
-    mat[0][1] = 'Orange';
-    mat[0][2] = 'Banana';
-
-    return mat;
-};
-let matrix = make_matrix(3, 2);
+// const make_matrix = (r, c) => {
+//     let mat = new Array(r);
+//     for (let row = 0; row < r; row++)
+//         mat[row] = new Array(c);
+//
+//     // Hard-code col-names
+//     mat[0][0] = 'Apple';
+//     mat[0][1] = 'Orange';
+//     mat[0][2] = 'Banana';
+//
+//     return mat;
+// };
+// let matrix = make_matrix(3, 2);
 // ----------------------------------------------
 // Quantities for day
 const quants = {
@@ -23,16 +23,9 @@ const quants = {
         this[name] = quant;
     },
 
+    // Display current quantities to screen
     display() {
         const input_fields = Array.from(document.getElementsByClassName('JOSH'));
-
-
-        // TEST: Update one element (banana one)
-        // const food_name = input_fields[2].parentElement.parentElement.dataset.josh;
-        // input_fields[2].value = this[food_name];
-        
-
-
         input_fields.forEach((elem, idx, arr) => {
 
             // // Step 1: Grab name of row:
