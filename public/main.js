@@ -24,7 +24,7 @@ class Data_for_Day {
         'fat': 0
     };
 
-    food_quants = {
+    food_quantities = {
         'apple': 0,
         'banana': 0,
         'orange': 0,
@@ -59,12 +59,6 @@ class Data_for_Day {
                     this.update_quantities(elem.name, elem.quantity);
                 });
 
-                // DEBUG
-                console.log('~~~~~~~~~~~~~~~~');
-                console.log(this.food_quants);
-                console.log('~~~~~~~~~~~~~~~~');
-
-
                 // update quantities drawn to screen
                 this.update_quantity_display();
 
@@ -85,50 +79,23 @@ class Data_for_Day {
 
     }
     update_quantities(name, quantity) {
-        this.food_quants[name] = quantity;
+        this.food_quantities[name] = quantity;
     }
 
     update_quantity_display() {
-        const input_fields = Array.from(document.getElementsByClassName('JOSH'));
+        const input_fields = Array.from(document.getElementsByClassName('food-quantity-input-field'));
         input_fields.forEach((elem, idx, arr) => {
 
             // Step 1: Grab name of row:
             const food_name = elem.parentElement.parentElement.dataset.josh;
 
             // Step 2: Set HTML value to quantity
-            elem.value = this.food_quants[food_name];
+            elem.value = this.food_quantities[food_name];
         });
     }
 
 }
 // ----------------------------------------------
-// Quantities for day
-const quants = {
-    // -Upon page load the properties
-    //  and their corresponding values
-    //  are added.
-
-    update(name, quant) {
-        this[name] = quant;
-    },
-
-    // Display current quantities to screen
-    display() {
-        const input_fields = Array.from(document.getElementsByClassName('JOSH'));
-        input_fields.forEach((elem, idx, arr) => {
-
-            // // Step 1: Grab name of row:
-            const food_name = elem.parentElement.parentElement.dataset.josh;
-
-            // // Step 2: Set HTML value to quantity
-            //console.log(this['this[food_name] = ' + food_name] + ',  !this[food_name] = ' + !this[food_name] );
-            if(this[food_name]) {
-                elem.value = this[food_name];
-            }
-                
-        });
-    }
-};
 // ----------------------------------------------
 const day_totals = {
     'cals': 0,
