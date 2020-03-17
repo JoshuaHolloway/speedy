@@ -59,6 +59,9 @@ class Data_for_Day {
             type: 'GET',
             success: data => {
 
+                // -data comes in as an array of objects
+                // -each element is a {food-name: quantity}-object
+
                 // update local js-object storing quantities for day
                 data.forEach(d => {
                     this.foods[d.name] = d.quantity;
@@ -67,11 +70,32 @@ class Data_for_Day {
                     const table = document.getElementById('quantity-table');
 
                     tr.innerHTML = `
-                            <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/${d.name}.jpg">${d.name}</td>
-                            <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
                             <td>
-                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
-                                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                <img src="assets/img/${d.name}.jpg" class="rounded-circle mr-2" width="30" height="30">
+                                ${d.name}
+                            </td>
+                            <td>
+                                <input value="${d.quantity}" type="number" class="food-quantity-input-field">
+                                <span class="cals">
+                                    x
+                                </span>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
+                                        Dropdown
+                                    </button>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            First Item
+                                        </a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            Second Item
+                                        </a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            Third Item
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                     `;
@@ -79,9 +103,6 @@ class Data_for_Day {
                     tr.dataset.food = d.name;
                     table.append(tr);
                 });
-
-                console.log(data);
-
 
 
                 // DEBUG
@@ -105,20 +126,6 @@ class Data_for_Day {
             }
         })
 
-    }
-
-
-    // TODO: Generate the row with data-name based on the foods retrieved from database
-    update_quantity_display() {
-        const input_fields = Array.from(document.getElementsByClassName('food-quantity-input-field'));
-        input_fields.forEach((elem, idx, arr) => {
-
-            // Step 1: Grab name of row:
-            const food_name = elem.parentElement.parentElement.dataset.food;
-
-            // Step 2: Set HTML value to quantity
-            elem.value = this.foods[food_name];
-        });
     }
 
     update_totals() {
