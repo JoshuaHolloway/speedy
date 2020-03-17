@@ -146,7 +146,19 @@ joshs.forEach((elem, idx, arr) => {
 
         // TODO: CHANGE TO ONLY UPDATE DB ON PAGE CHANGE
         // Step 5: Update Database
-        $.ajax({url: 'update2', type: 'POST', data: { day_totals: day_totals } });
+        $.ajax(
+            {
+                url: 'update2', 
+                type: 'POST', 
+                data: 
+                {
+                    day_totals: day_totals,
+                    updated_quants: {
+                        'name': food_name,
+                        'quant': quantity
+                    }
+                } 
+            });
     });
 });
 
