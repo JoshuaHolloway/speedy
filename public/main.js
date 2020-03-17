@@ -60,9 +60,7 @@ class Data_for_Day {
             success: data => {
 
                 // update local js-object storing quantities for day
-                data.forEach((elem, idx, arr) => {
-                    this.foods[elem.name] = elem.quantity;
-                });
+                data.forEach(d => this.foods[d.name] = d.quantity);
 
                 // DEBUG
                 console.log('~~~~~~~~~~~~~~~~');
