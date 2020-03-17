@@ -1,7 +1,7 @@
 // ----------------------------------------------
 // NOTE: This will be replaced by an API-call
-const foods = {
-    grapenuts: {
+const nutrition_facts = {
+    'grapenuts': {
         cals: 200,
         macro: {
             fat: {
@@ -32,7 +32,34 @@ const foods = {
             iron: 0.0162,
             potassium: 0.260
         }
-    }
+    },
+    'apple': {
+        cals: 95
+    },
+    'orange': {
+        cals: 45
+    },
+    'banana': {
+        cals: 105
+    },
+    'egg-whole': {
+        cals: 78
+    },
+    'egg-white': {
+        cals: 17
+    },
+    'strawbabies': {
+        cals: 47
+    },
+    'chicken': {
+        cals: 142
+    },
+    'bread': {
+        cals: 130
+    },
+    'milk': {
+        cals: 103
+    },
 };
 // ----------------------------------------------
 // Data for day
@@ -69,6 +96,8 @@ class Data_for_Day {
                     const tr = document.createElement('tr');
                     const table = document.getElementById('quantity-table');
 
+                    const cals = nutrition_facts[d.name].cals * d.quantity;
+                    
                     tr.innerHTML = `
                             <td>
                                 <img src="assets/img/${d.name}.jpg" class="rounded-circle mr-2" width="30" height="30">
@@ -77,7 +106,7 @@ class Data_for_Day {
                             <td>
                                 <input value="${d.quantity}" type="number" class="food-quantity-input-field">
                                 <span class="cals">
-                                    x
+                                    ${cals}
                                 </span>
                             </td>
                             <td>
@@ -111,7 +140,7 @@ class Data_for_Day {
                 console.log('~~~~~~~~~~~~~~~~');
 
                 // update quantities drawn to screen
-                this.update_quantity_display();
+                //this.update_quantity_display();
 
                 // update daily totals
                 //this.update_totals();
