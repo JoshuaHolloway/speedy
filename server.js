@@ -68,22 +68,21 @@ app.post('/update', (req, res) => {
 app.post('/update2', (req, res) => {
   console.log('Inside /update2 route on server');
 
-  const day_totals = req.body.day_totals;
-  const updated_quants = req.body.updated_quants;
-  const quant = updated_quants.quant;
-  const name = updated_quants.name;
-
   // Update the db for this single foods new quants
   db.run(
     `UPDATE food_table SET quantity = ($quantity) WHERE name = ($name)`,
     {
-      $name: name,
-      $quantity: quant
+      $name: req.body.name,
+      $quantity: req.body.quantity
     },
     err => {
-      console.log(`SQL-query has been performed updating:   ${name}=${quant}`);
+      console.log(`SQL-query has been performed updating:   ${req.body.name}=${req.body.quantity}`);
     }
   );
+});
+// ==============================================
+app.get('/josh', (req, res) => {
+  console.log('/josh');
 });
 // ==============================================
 app.get('/table', (req, res) => {

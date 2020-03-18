@@ -29,15 +29,10 @@
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
-
-
-
-
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid">
-                        <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
                                 <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
@@ -137,25 +132,15 @@
                                             class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
                                             <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
                     </div>
-                        </li>
-                        </ul>
-                    </div>
-                </nav>
-
-
-
-
+                    </li>
+                    </ul>
+            </div>
+            </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">
-                    Food Log for Day
-                </h3>
-
-                <div
-                    class="card shadow">
+                <h3 class="text-dark mb-4">Food Log for Day</h3>
+                <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Jan 01 2020
-
-                        </p>
+                        <p class="text-primary m-0 font-weight-bold">Jan 01 2020</p>
                         <div class="row">
                             <div class="col">
                                 <div class="table-responsive">
@@ -184,7 +169,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="col"></div>
+                            <div class="col"><button class="btn btn-primary" id="update-button" type="button">Update</button></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -206,7 +191,96 @@
                                     </tr>
                                 </thead>
                                 <tbody id="quantity-table">
-
+                                    <tr data-food="apple">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/apple-powder-organic%20-60x69.jpg">Apple</td>
+                                        <td><input type="number" class="food-quantity-input-field" value="1"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="banana">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/banana-60x60.jpg">Banana</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="orange">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/orange-60x61.jpg">Orange</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="grapenuts">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/grapenuts-60x60.jpg">Grapenuts</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="bread">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/bread-60x60.jpg">Bread</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="egg-whole">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/whole%20egg-80x60.png">Whole Egg</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="egg-white">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/egg%20white-80x60.jpg">Egg White<br></td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="chicken">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/chicken%20breast-90x60.jpg">Chicken Breast</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="milk">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/milk-60x60.jpg">Milk (1%)</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr data-food="strawbabies">
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/strawberry-60x62.jpg">Strawbabies</td>
+                                        <td><input type="number" class="food-quantity-input-field"><span class="cals">x</span></td>
+                                        <td>
+                                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -234,19 +308,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
-    <footer class="bg-white sticky-footer">
-        <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
-        </div>
-    </footer>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
+            </div>
+        </footer>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

@@ -144,6 +144,17 @@ class Data_for_Day {
 
                 input_fields.forEach((elem, idx, arr) => {
                     elem.addEventListener('change', () => console.log('CHANGED') );
+
+                    // grab name of row
+                    const parent = elem.parentElement.parentElement;
+                    const name = parent.dataset.food;
+                    console.log(name);
+
+                    // get new quantity for row
+                    const quantity = elem.value;
+
+                    //$.ajax({url: 'update2', type: 'POST', data: { name: name, quantity: quantity } });
+                    $.ajax({url: 'josh', type: 'GET', success: data => console.log('SUCCESSFULL') });
                 });
 
 
