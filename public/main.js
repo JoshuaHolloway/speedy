@@ -198,12 +198,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const data_for_day = new Data_for_Day();
 });
 // ==============================================
-// Update database and calculate daily totals upon change in field
-
-
-$(document).ready(() => {
-
-    console.log('document ready');
-
-
-});
+// Update database and recalculate totals when button is pressed
+// TODO
+// TODO
+// TODO
+// TODO
+// TODO
+// TODO
