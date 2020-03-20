@@ -85,8 +85,8 @@ app.get('/josh', (req, res) => {
   console.log('/josh');
 });
 // ==============================================
-app.get('/table', (req, res) => {
-  res.render('table.ejs');
+app.get('/dash', (req, res) => {
+  res.render('dash.ejs');
 });
 // ==============================================
 app.get('/', (req, res) => {
