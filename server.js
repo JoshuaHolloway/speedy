@@ -89,6 +89,10 @@ app.get('/dash', (req, res) => {
   res.render('dash.ejs');
 });
 // ==============================================
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard.ejs');
+});
+// ==============================================
 app.get('/', (req, res) => {
 
   const date = new Date();
