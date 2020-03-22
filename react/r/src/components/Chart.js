@@ -45,6 +45,10 @@ const chartConfig = {
 };
 
 const Chart = () => {
+
+
+
+
   const chartContainer = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
 
@@ -60,24 +64,21 @@ const Chart = () => {
     chartInstance.update();
   };
 
-  const onButtonClick = () => {
-    const data = [
-      randomInt(),
-      randomInt(),
-      randomInt(),
-      randomInt(),
-      randomInt(),
-      randomInt()
-    ];
-    updateDataset(0, data);
-  };
 
-  return (
-    <div>
-      <button onClick={onButtonClick}>Randomize!</button>
-      <canvas ref={chartContainer} />
-    </div>
-  );
+
+    const onButtonClick = (event) => {
+        const x = document.getElementById('josh').value;
+        updateDataset(0, [x,x,x,x,x,x,x]);
+    };
+
+    return (
+        <div>
+
+            <input id="josh" type="number"/>
+            <button onClick={onButtonClick}>JOSH!</button>
+            <canvas ref={chartContainer} />
+        </div>
+    );
 };
 
 export default Chart;
