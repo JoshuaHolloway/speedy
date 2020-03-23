@@ -4,6 +4,25 @@ import './App.css';
 import Chart from './components/Chart';
 
 function App() {
+
+  const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+
+  const getProducts = _ => {
+    
+    fetch(url)
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .then(data => {
+        console.log('EURO-Rate: ' + data.bpi.EUR.rate);
+      })
+    ;
+  };
+
+
+  getProducts();
+
   return (
     <div className="App">
       <header className="App-header">
