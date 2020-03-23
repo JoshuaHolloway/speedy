@@ -24,7 +24,6 @@ function App() {
           Learn React
         </a>
 
-        <Chart/>
 
         <br/>
 
