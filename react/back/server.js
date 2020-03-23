@@ -20,7 +20,10 @@ app.get('/covid', (req, res) => {
       console.error(err);
       return;
     }
-    console.log(await neatCsv(data));
+    rv = await neatCsv(data);
+
+    //console.log(rv);
+    res.send({data: rv});
   })
 });
 // ==============================================
