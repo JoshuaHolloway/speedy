@@ -78,14 +78,14 @@ const ScatterExample = () => {
     const url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv';
 
     fetch(url)
-        .then(res => {
-            console.log(res);
-            return res.text();
-        }).then(data => {
-            //console.log(data);
+        .then(res => res.text()).then(data => {
 
             const x = readString(data);
-            console.log(x);
+            for (let i = 0; i < x.data.length; ++i)
+            {
+              if (x.data[i][1] == 'US')
+                console.log(x.data[i]);
+            }
         });
   }
 
