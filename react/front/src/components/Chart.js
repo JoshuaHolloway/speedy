@@ -57,8 +57,12 @@ const Chart = () => {
     }
   }, [chartContainer]);
 
-  const updateDataset = (datasetIndex, newData) => {
+  const updateDataset = (datasetIndex, newData, newLabels) => {
     chartInstance.data.datasets[datasetIndex].data = newData;
+    chartInstance.data.labels = newLabels;
+
+    console.log(chartInstance.data.labels);
+
     chartInstance.update();
   };
 
@@ -81,7 +85,9 @@ const Chart = () => {
           console.log(data[0].name, data[0].quantity);
 
           const x = data[0].quantity;
-          updateDataset(0, [x,x,x,x,x,x,x]);
+          const n = data[0].name;
+
+          updateDataset(0, [x,x,x,x,x,x,x], [n, n, n, n, n, n]);
         });
 
 

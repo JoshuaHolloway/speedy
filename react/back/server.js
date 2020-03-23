@@ -8,11 +8,19 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 // ==============================================
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('food.db');
+// ==============================================
 app.get('/josh', (req, res) => {
-  const x = {
-    'josh': 0
-  };
-  res.send(x);
+
+  db.all('SELECT * FROM food_table', (err, rows) => {
+      console.log(rows);
+
+      // Send data to front-end
+      res.send({
+        data: rows
+      });
+  });
 });
 // ==============================================
 app.get('/', (req, res) => {
