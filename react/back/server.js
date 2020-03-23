@@ -11,6 +11,19 @@ app.set('views', 'views');
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('food.db');
 // ==============================================
+// C:\dev\todo\react\back\time_series_19-covid-Confirmed.csv
+const neatCsv = require('neat-csv');
+const fs = require('fs')
+app.get('/covid', (req, res) => {
+  fs.readFile('./time_series_19-covid-Confirmed.csv', async (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(await neatCsv(data));
+  })
+});
+// ==============================================
 app.get('/josh', (req, res) => {
 
   db.all('SELECT * FROM food_table', (err, rows) => {
