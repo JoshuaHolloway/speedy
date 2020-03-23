@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chartjs from "chart.js";
 
-const randomInt = () => Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-
 const chartConfig = {
   type: "bar",
   data: {
@@ -66,9 +64,29 @@ const Chart = () => {
 
 
 
+
+
+
+
+
+
+
     const onButtonClick = (event) => {
-        const x = document.getElementById('josh').value;
-        updateDataset(0, [x,x,x,x,x,x,x]);
+
+      const url = 'http://localhost:8888/josh';
+      fetch(url)
+        .then(res => res.json())
+        .then(({data}) => {
+
+          console.log(data[0].name, data[0].quantity);
+
+          const x = data[0].quantity;
+          updateDataset(0, [x,x,x,x,x,x,x]);
+        });
+
+
+        // const x = document.getElementById('josh').value;
+        // updateDataset(0, [x,x,x,x,x,x,x]);
     };
 
     return (
