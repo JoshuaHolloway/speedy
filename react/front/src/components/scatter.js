@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Scatter} from 'react-chartjs-2';
+import CSVReader from 'react-csv-reader';
 
 const ScatterExample = () => {
 
@@ -35,19 +36,16 @@ const ScatterExample = () => {
     const url = 'https://pomber.github.io/covid19/timeseries.json';
     fetch(url)
       .then(res => {
+        console.clear();
+        console.log(res);
         return res.json();
       })
       .then(data => {
 
         let confirmed_arr = [];
         data.US.forEach((val, idx, arr) => {
-          console.log(val.confirmed)
-
           confirmed_arr.push({x: idx, y: val.confirmed});
-
-          
         });
-        console.log(confirmed_arr);
 
         b(
           {
@@ -75,13 +73,30 @@ const ScatterExample = () => {
 
   };
 
+  const johns_hopkins_click = _ => {
+    
+    const url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv';
+
+    fetch(url)
+        .then(res => {
+            console.log(res);
+            return res.text();
+        }).then(data => {
+            console.log(data);
+        });
+  }
+
   return (
     <div>
+      <button onClick={johns_hopkins_click}>Johns Hopkins</button>
       <button onClick={corona_button_click}>Update Cases</button>
       <br/>
       {/* <Scatter data={data} /> */}
       <Scatter data={a} />
+
+      <CSVReader onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} />
     </div>
+
   );
 };
 
