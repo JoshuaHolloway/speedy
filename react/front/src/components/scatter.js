@@ -8,7 +8,7 @@ const ScatterExample = () => {
       labels: ['Scatter'],
       datasets: [
         {
-          label: 'Confirmed Cases',
+          label: 'Cases',
           fill: false,
           backgroundColor: 'rgba(75,192,192,0.4)',
           pointBorderColor: 'rgba(75,192,192,1)',
@@ -54,7 +54,7 @@ const ScatterExample = () => {
             labels: ['Scatter'],
             datasets: [
               {
-                label: 'Confirmed Cases',
+                label: 'Confirmed',
                 fill: false,
                 backgroundColor: 'rgba(75,192,192,0.4)',
                 pointBorderColor: 'rgba(75,192,192,1)',
