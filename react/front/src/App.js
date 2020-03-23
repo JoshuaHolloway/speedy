@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Chart from './components/Chart';
+import ScatterExample from './components/scatter';
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
         </a>
 
         <Chart/>
+
+        <br/>
+
+        <ScatterExample/>
 
       </header>
 

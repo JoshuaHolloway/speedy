@@ -43,20 +43,17 @@ const chartConfig = {
 };
 
 const Chart = () => {
-
-
-
-
+  // ============================================
   const chartContainer = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
-
+  // ============================================
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
       setChartInstance(newChartInstance);
     }
   }, [chartContainer]);
-
+  // ============================================
   const updateDataset = (datasetIndex, newData, newLabels) => {
     chartInstance.data.datasets[datasetIndex].data = newData;
     chartInstance.data.labels = newLabels;
@@ -65,44 +62,47 @@ const Chart = () => {
 
     chartInstance.update();
   };
+  // ============================================
+  const onButtonClick = (event) => {
 
+    const url = 'http://localhost:8888/josh';
+    fetch(url)
+      .then(res => res.json())
+      .then(({data}) => {
 
+        console.log(data[0].name, data[0].quantity);
 
+        const x = data[0].quantity;
+        const n = data[0].name;
 
+        updateDataset(0, [x,x,x,x,x,x,x], [n, n, n, n, n, n]);
+      });
+  };
+  // ============================================
+  // https://github.com/pomber/covid19
+  const corona_button_click = (event) => {
+    console.log('CORONA button click!');
 
+    const url = 'https://pomber.github.io/covid19/timeseries.json';
+    fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(data => console.log(data.Canada));
+  };
+  // ============================================
+  return (
+      <div>
 
+          <input id="josh" type="number"/>
+          <button onClick={onButtonClick}>JOSH!</button>
+          <button onClick={corona_button_click}>COVID-19</button>
+          <canvas ref={chartContainer} />
 
-
-
-
-    const onButtonClick = (event) => {
-
-      const url = 'http://localhost:8888/josh';
-      fetch(url)
-        .then(res => res.json())
-        .then(({data}) => {
-
-          console.log(data[0].name, data[0].quantity);
-
-          const x = data[0].quantity;
-          const n = data[0].name;
-
-          updateDataset(0, [x,x,x,x,x,x,x], [n, n, n, n, n, n]);
-        });
-
-
-        // const x = document.getElementById('josh').value;
-        // updateDataset(0, [x,x,x,x,x,x,x]);
-    };
-
-    return (
-        <div>
-
-            <input id="josh" type="number"/>
-            <button onClick={onButtonClick}>JOSH!</button>
-            <canvas ref={chartContainer} />
-        </div>
-    );
+          
+      </div>
+  );
+  // ============================================
 };
 
 export default Chart;
