@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Scatter} from 'react-chartjs-2';
-import CSVReader from 'react-csv-reader';
+import { readString  } from 'react-papaparse'
 
 const ScatterExample = () => {
 
@@ -82,7 +82,10 @@ const ScatterExample = () => {
             console.log(res);
             return res.text();
         }).then(data => {
-            console.log(data);
+            //console.log(data);
+
+            const x = readString(data);
+            console.log(x);
         });
   }
 
@@ -91,10 +94,9 @@ const ScatterExample = () => {
       <button onClick={johns_hopkins_click}>Johns Hopkins</button>
       <button onClick={corona_button_click}>Update Cases</button>
       <br/>
-      {/* <Scatter data={data} /> */}
       <Scatter data={a} />
 
-      <CSVReader onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} />
+
     </div>
 
   );
