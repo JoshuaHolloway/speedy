@@ -81,11 +81,27 @@ const ScatterExample = () => {
         .then(res => res.text()).then(data => {
 
             const x = readString(data);
-            for (let i = 0; i < x.data.length; ++i)
-            {
-              if (x.data[i][1] == 'US')
-                console.log(x.data[i]);
+
+            
+            let US_rows = [];
+
+            const num_rows = x.data.length;
+            for (let i = 0; i < num_rows; ++i) {
+              if (x.data[i][1] === 'US')
+                US_rows.push(x.data[i]);
             }
+
+            console.log('US-Rows:');
+            console.log(US_rows);
+
+            let OK_rows = [];
+            const num_US_rows = US_rows.length;
+            for (let i = 0; i < num_US_rows; ++i) {
+              if (US_rows[i][0] === 'Oklahoma')
+                OK_rows.push(US_rows[i]);
+            }
+            console.log('OK-Rows');
+            console.log(OK_rows);
         });
   }
 
